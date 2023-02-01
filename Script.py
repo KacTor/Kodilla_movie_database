@@ -1,5 +1,6 @@
 import csv
 from Class import Movies, TvSeries
+import random
 
 movieAndSeriesDatabase = []
 
@@ -63,6 +64,23 @@ def get_series():
     return sort_by_title
 
 
+def search(searchedTitle: str):
+    for title in movieAndSeriesDatabase:
+        if searchedTitle in title.title:
+            print(title)
+
+
+def generate_views():
+    selectedTitle = random.choice(movieAndSeriesDatabase)
+    selectedTitle.numberOfPlays = random.randint(1, 100)
+
+
 add_to_base_from_csv_file('TvSeriesDatabase.csv', 1)
 
 add_to_base_from_csv_file('MovieDatabase.csv', 0)
+
+
+search('Rick')
+
+
+generate_views()
