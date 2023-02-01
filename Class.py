@@ -1,4 +1,4 @@
-class Movie:
+class Movies:
 
     def __init__(self, title, releaseDate, genre, numberOfPlays) -> None:
         self.title = title
@@ -16,7 +16,7 @@ class Movie:
         return f'{self.title} ({self.releaseDate})'
 
 
-class TvSeries(Movie):
+class TvSeries(Movies):
 
     def __init__(self, numberOfSeason, numberOfEpisode, *args) -> None:
         super().__init__(*args)

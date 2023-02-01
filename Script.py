@@ -1,7 +1,9 @@
 import csv
-from Class import Movie, TvSeries
+from Class import Movies, TvSeries
 
 movieAndSeriesDatabase = []
+
+# Add movies or TvSeries from external file csv
 
 
 def add_to_base_from_csv_file(nameOfFile: str, movieOrTvSeries: int):
@@ -18,7 +20,7 @@ def add_to_base_from_csv_file(nameOfFile: str, movieOrTvSeries: int):
                 genre = row[2].split(',')
                 numberOfPlays = row[3]
                 movieAndSeriesDatabase.append(
-                    Movie(nameOfMovie, releaseDate, genre, int(numberOfPlays)))
+                    Movies(nameOfMovie, releaseDate, genre, int(numberOfPlays)))
         else:
             for row in file:
                 nameOfMovie = row[0]
@@ -30,10 +32,37 @@ def add_to_base_from_csv_file(nameOfFile: str, movieOrTvSeries: int):
                 movieAndSeriesDatabase.append(
                     TvSeries(int(numberOfSeason), int(numberOfEpisode), nameOfMovie, releaseDate, genre, int(numberOfPlays)))
 
+# Return only movies from database
+
+
+def get_movies():
+    moviesList = []
+    for movie in movieAndSeriesDatabase:
+        if isinstance(movie, TvSeries):
+            continue
+        else:
+            moviesList.append(movie)
+
+    sort_by_title = sorted(moviesList, key=lambda movie: movie.title)
+
+    return sort_by_title
+
+# Return only series from database
+
+
+def get_series():
+    seriesList = []
+    for series in movieAndSeriesDatabase:
+        if isinstance(series, TvSeries):
+            seriesList.append(series)
+        else:
+            continue
+
+    sort_by_title = sorted(seriesList, key=lambda series: series.title)
+
+    return sort_by_title
+
 
 add_to_base_from_csv_file('TvSeriesDatabase.csv', 1)
 
 add_to_base_from_csv_file('MovieDatabase.csv', 0)
-
-
-print(movieAndSeriesDatabase)
