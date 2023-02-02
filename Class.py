@@ -24,7 +24,15 @@ class TvSeries(Movies):
         self.numberOfEpisode = numberOfEpisode
 
     def __str__(self) -> str:
-        return f'{self.title} S{self.numberOfSeason:02d}E{self.numberOfEpisode:02d}.'
+        return f'{self.title} S{self.numberOfSeason:02d}E{self.numberOfEpisode:02d}'
 
     def __repr__(self) -> str:
         return f'{self.title} S{self.numberOfSeason:02d}E{self.numberOfEpisode:02d} Views: {self.numberOfPlays}'
+
+    def amountOfEpisode(self, TvSeriesDataBase: list):
+        numbOfEpisode = 0
+        for series in TvSeriesDataBase:
+            if isinstance(series, TvSeries) and series.title == self.title:
+                numbOfEpisode += 1
+
+        return print(f'{self.title}, Number of Episode: {numbOfEpisode}')
