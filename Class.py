@@ -13,7 +13,7 @@ class Movies:
         return f'{self.title} ({self.releaseDate})'
 
     def __repr__(self) -> str:
-        return f'{self.title} ({self.releaseDate})'
+        return f'{self.title} ({self.releaseDate}) Views: {self.numberOfPlays}'
 
 
 class TvSeries(Movies):
@@ -27,4 +27,4 @@ class TvSeries(Movies):
         return f'{self.title} S{self.numberOfSeason:02d}E{self.numberOfEpisode:02d}.'
 
     def __repr__(self) -> str:
-        return f'{self.title} S{self.numberOfSeason:02d}E{self.numberOfEpisode:02d}'
+        return f'{self.title} S{self.numberOfSeason:02d}E{self.numberOfEpisode:02d} Views: {self.numberOfPlays}'
